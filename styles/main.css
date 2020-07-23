@@ -2,8 +2,51 @@
 
 * {
 	font-family: 'Source Sans Pro', sans-serif;
+	box-sizing: border-box;
 }
 
-h1 {
-	color: blue;
+:root {
+	--main-color: #2a9134;
+	--secondary-color: #137547;
+	--navbar-bg-color: #5bba6f;
+}
+
+.navbar {
+	background-color: var(--navbar-bg-color);
+}
+
+.navbar-nav {
+	display: grid;
+	row-gap: 1rem;
+	margin: 1rem auto;
+	width: 80%;
+}
+
+.nav-item {
+	border-radius: 5px;
+	border: 1px solid black;
+	
+	padding: .1rem;
+
+	text-align: center;
+	font-size: 1.25rem;
+}
+
+main {
+	padding: 2rem 3rem;
+}
+
+@media(min-width:992px) {
+	
+		.navbar-nav {
+			display: grid;
+			grid-auto-flow: column;
+			column-gap: 1rem;
+			margin: 0;
+			width: 30rem;
+		}
+		
+		.nav-item {
+			font-size: 1rem;
+	}
 }

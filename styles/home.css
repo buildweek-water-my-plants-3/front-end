@@ -1,0 +1,19 @@
+
+:root {
+
+	--main-bg-color: #a6e5b3;
+}
+
+main h1 {
+	text-align: center;
+	margin: 2.5rem 0;
+}
+
+main {
+	background-color: var(--main-bg-color);
+}
+
+img {
+	width: 100%;
+	border-radius: 10px;
+}
