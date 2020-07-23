@@ -3,13 +3,24 @@
 
 	--main-bg-color: #a6e5b3;
 }
-
-main h1 {
+main h1, main h2 {
 	text-align: center;
-	margin: 2.5rem 0;
 }
 
-main {
+main h1 {
+	padding: 2.5rem 0;
+}
+
+#features {
+ color: #137547;
+}
+
+section {
+	padding: 2rem 3rem;
+	text-align: justify;
+}
+
+#introduction {
 	background-color: var(--main-bg-color);
 }
 

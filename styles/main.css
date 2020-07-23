@@ -6,8 +6,6 @@
 }
 
 :root {
-	--main-color: #2a9134;
-	--secondary-color: #137547;
 	--navbar-bg-color: #5bba6f;
 }
 
@@ -30,10 +28,6 @@
 
 	text-align: center;
 	font-size: 1.25rem;
-}
-
-main {
-	padding: 2rem 3rem;
 }
 
 @media(min-width:992px) {
