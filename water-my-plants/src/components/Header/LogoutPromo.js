@@ -104,12 +104,12 @@ function LogoutPromo() {
 
         <LogoutContain>
 
-          
+{/*           
               <SignOutBanner>
                   <Link to="/login">
                       <button onClick= {() => HandleLogOut()}>logout</button>
                     </Link>
-              </SignOutBanner>
+              </SignOutBanner> */}
 
 
 

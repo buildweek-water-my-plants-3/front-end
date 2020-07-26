@@ -20,7 +20,7 @@ font-family: roboto;
 
         &&:hover {
           background-color: #0bb565;
-          right: calc(3rem - 3px);
+          right: 3rem;
           margin-top: 5px;
           box-shadow: 3px 3px 0px #555555;
         

@@ -33,7 +33,7 @@ function Header() {
     margin: 0;
     margin-right: calc(2rem + 6px);
       &&:hover {
-        margin-right: calc(2rem + 3px);
+      
       }
     `
 

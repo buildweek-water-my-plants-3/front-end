@@ -91,8 +91,8 @@ export default function () {
         `
 
     const AccountStyle = styled.div `
-    margin: 2rem;
-    width: calc(100% - 2rem)
+    
+    width: 100%;
     `
 
     let id = localStorage.getItem('userID');

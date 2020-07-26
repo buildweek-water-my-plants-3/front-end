@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import {Link} from 'react-router-dom';
 import {Route} from 'react-router-dom';
-import Register from './Register';
 import SignUp from './SignUp';
 
 
@@ -32,17 +31,6 @@ max-width: 20%;
 `
 
 
-const LoginContain = styled.div
-`
-position: absolute;
-height: 3rem;
-display: flex;
-justify-content: space-between;
-right: 2rem;
-top: -.5rem;
-
-`
-
 const LoginPrompt = styled.div
 `
 display: flex;
@@ -56,6 +44,7 @@ min-width: 6rem;
             box-sizing: border-box;
             border-top: 4px solid transparent;
             border-bottom: 4px solid #FDCB02;
+           margin-left: 3px;
           }
 
 
@@ -65,26 +54,13 @@ min-width: 6rem;
 
 function LoginPromo() {
 
-  const LoginSpan = styled.span 
-  `
-    color: white;
-    font-weight: 400;
-    font-size: rem;
-    
-
-    `
 
   return (
-
-    
-
-
     
    <LoginDiv>
 
      <LoginPrompt>
         
-        <Route path ="/(login|register)" component={Register} />
         
 
         <SignUp />
@@ -92,12 +68,6 @@ function LoginPromo() {
   
 
      </LoginPrompt>
-
-
-        {/* <LoginContain>
-
-
-        </LoginContain> */}
 
 
    </LoginDiv>
