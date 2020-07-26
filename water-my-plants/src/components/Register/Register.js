@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import axios from 'axios'
 import { useHistory } from 'react-router-dom'
+import styled from 'styled-components'
 
 
 export default function() {
@@ -26,9 +27,48 @@ export default function() {
 			.catch((err) => console.log(err))
 	}
 
+	const RegisterBox = styled.div `
+		border: 3px solid green;
+		border-radius: .35rem;
+		max-width: 30vw;
+
+		input {
+			min-height: 2rem;
+			margin: 2rem;
+		}
+	`
+
+	const SubmitButton = styled.button `
+		width: calc(100% - 4rem);
+		border-radius: .35rem;
+		margin-top: 2rem;
+		padding: 1.5rem;
+		background-color: #0b9444;
+		text-transform: uppercase;
+		font-size: 1.5rem;
+		color: white;
+		margin: 0 2rem;
+		margin-bottom: 2rem;
+	
+	`
+	
+	const Title = styled.h1 `
+	text-align: center;
+	
+	`
+
+
+
+
 	return (
 		<form onSubmit={handleSubmit}>
-			<h1>Login</h1>
+
+
+			
+			<Title>Register</Title>
+
+			<RegisterBox>
+
 			<input
 				type='text'
 				placeholder='Username'
@@ -43,12 +83,18 @@ export default function() {
 			/>
             <input
 				type='phoneNumber'
-				placeholder='Valid PhoneNumber'
+				placeholder='Phone Number'
 				value={phoneNumber}
 				onChange={e => setPhoneNumber(e.target.value)}
 			/>
 
-			<button type='submit'>Submit</button>
+
+			<SubmitButton type='submit'>Submit</SubmitButton>
+
+		</RegisterBox>
+
+
+
 		</form>
 	)
 }

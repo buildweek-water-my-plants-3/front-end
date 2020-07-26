@@ -1,5 +1,16 @@
+html {
+	background-color: #eff3f6;
+}
+
+#root {
+	margin: 0 auto;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
 body {
-	margin: 0;
+	margin: 0 auto;
 	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
 		'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
 		sans-serif;
@@ -7,10 +18,6 @@ body {
 	-moz-osx-font-smoothing: grayscale;
 }
 
-code {
-	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-		monospace;
-}
 
 .container {
 	background-color: #252627;
@@ -39,26 +46,5 @@ input, select {
 	min-width: 300px;
 }
 
-button {
-	background: #904E55;
-    border: none;
-    border-radius: 1em;
-	font-size: 18px;
-	font-weight: bold;
-	padding: 10px 15px;
-	cursor: pointer;
-}
 
-.coffee-box {
-    background-color: #904E55;
-    margin-top: 2em;
-    border-radius: 1em;
-    padding-left: 2em;
-    padding-right: 2em;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	font-size: calc(10px + 2vmin);
-    text-align: center;
-}
+
