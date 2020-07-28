@@ -2,7 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 import {Link} from 'react-router-dom';
 import {Route} from 'react-router-dom';
-import SignUp from './SignUp';
+import Register from './Register'
+import SignUp from './SignUp'
+import {matchPath} from "react-router";
 
 
 
@@ -31,6 +33,21 @@ max-width: 20%;
 `
 
 
+const LoginContain = styled.div
+`
+position: absolute;
+height: 3rem;
+display: flex;
+justify-content: space-between;
+right: 2rem;
+top: -.5rem;
+
+        &&:hover {
+          right: calc(2rem - 3px);
+        }
+
+`
+
 const LoginPrompt = styled.div
 `
 display: flex;
@@ -44,7 +61,6 @@ min-width: 6rem;
             box-sizing: border-box;
             border-top: 4px solid transparent;
             border-bottom: 4px solid #FDCB02;
-           margin-left: 3px;
           }
 
 
@@ -54,20 +70,41 @@ min-width: 6rem;
 
 function LoginPromo() {
 
+  const LoginSpan = styled.span 
+  `
+    color: white;
+    font-weight: 400;
+    font-size: .9rem;
+    
+
+    `
 
   return (
+
+    
+
+
     
    <LoginDiv>
 
      <LoginPrompt>
-        
-        
+
+       
 
         <SignUp />
 
   
 
      </LoginPrompt>
+
+
+        <LoginContain>
+
+            <Link to="/register">
+
+            </Link>
+
+        </LoginContain>
 
 
    </LoginDiv>

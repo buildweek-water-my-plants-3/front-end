@@ -65,7 +65,7 @@ function MainBar() {
 
   <MainBarDiv>
 
-    <Link to="/dashboard">
+    <Link to="/">
     <LogoDiv>
 
       

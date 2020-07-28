@@ -28,28 +28,30 @@ export default function() {
 	}
 
 	const RegisterBox = styled.div `
-		border: 3px solid green;
-		border-radius: .35rem;
-		max-width: 30vw;
+	border: 3px solid green;
+	border-radius: .35rem;
+	display: flex;
+	flex-direction: column;
+	min-width: 300px;
+	padding: 2rem;
 
-		input {
-			min-height: 2rem;
-			margin: 2rem;
-		}
-	`
+	input {
+		display: inline-block;
+		min-height: 2rem;
+		margin: 0rem 0rem 1rem;
+		max-width: 100%;
+	}
+`
 
 	const SubmitButton = styled.button `
-		width: calc(100% - 4rem);
+		width: 100%;
 		border-radius: .35rem;
-		margin-top: 2rem;
+		margin-top: 1rem;
 		padding: 1.5rem;
 		background-color: #0b9444;
 		text-transform: uppercase;
 		font-size: 1.5rem;
 		color: white;
-		margin: 0 2rem;
-		margin-bottom: 2rem;
-	
 	`
 	
 	const Title = styled.h1 `

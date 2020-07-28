@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import {Link} from 'react-router-dom';
+import {Link, Route} from 'react-router-dom';
 import "../Header/navLinks.css"
 
 
@@ -32,10 +32,50 @@ function NavBar() {
     return (
         
             <NavContain>
-                <Link id="plantsLink" to='/'>Home</Link>
-                <Link id="plantsLink" to="/Account">Account</Link>
-                <Link id="plantsLink" to='/register'>Register</Link>
-                <Link id="plantsLink" to='/logout'>Logout</Link> 
+
+
+
+                
+
+
+                <Route path contains = "/">
+                    <Link id="plantsLink" to='/'>Home</Link>
+                </Route>
+
+
+
+
+                <Route path = "/(account|settings)">
+                    <Link id="plantsLink" to="/Account">Account</Link>
+                </Route>
+
+                
+
+                <Route exact path="/">
+                    <Link id="plantsLink" to='/register'>Register</Link> 
+                </Route>
+
+                <Route path = "/(register|login)">
+                    <Link id="plantsLink" to='/register'>Register</Link> 
+                </Route>
+
+
+               
+
+                <Route exact path="/">
+                <Link id="plantsLink" to='/Login'>Login</Link>  
+                </Route>
+
+                <Route path="/(register|login)">
+                <Link id="plantsLink" to='/Login'>Login</Link>  
+                </Route>
+
+                <Route path = "/(account|settings)">
+                <Link id="plantsLink" to='/Settings'>Settings</Link>  
+                </Route>
+
+
+                
             </NavContain>
 
     );

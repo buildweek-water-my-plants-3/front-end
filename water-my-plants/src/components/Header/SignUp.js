@@ -59,19 +59,32 @@ export default function SignUp() {
 
         <SignUpBanner>
 
-            <Route path ="/(login|register)">
-                <a href="/register"><button>
+                <Route exact path ="/">
+                <a href="/register">
+                    <button>
+                    Signup
+                </button>
+                </a> 
+                </Route>   
+
+            <Route path ="/(register|login)">
+                <a href="/register">
+                    <button>
                     Signup
                 </button>
                 </a>
 
             </Route>
 
-            <Route path ="/(Account|)">
+            <Route path ="/(account|settings)">
+                <a href="/">
+                    <button>
+                    Logout
+                </button>
+                </a>
 
-                <button>LOGOUT</button>
-           
             </Route>
+
 
         </SignUpBanner>
     )

@@ -12,7 +12,7 @@ function Header() {
 
     const HeaderDiv = styled.div
     `
-    
+    width: 90vw;
     `
 
     const PromoBar = styled.div
