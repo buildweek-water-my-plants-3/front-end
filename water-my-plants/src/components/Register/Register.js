@@ -5,6 +5,8 @@ import styled from 'styled-components'
 
 
 export default function() {
+
+	// Hello 
     const [username, setUsername] = useState('')
     const [phoneNumber, setPhoneNumber] = useState('')
 	const [password, setPassword] = useState('')
@@ -94,7 +96,7 @@ export default function() {
 			<SubmitButton type='submit'>Submit</SubmitButton>
 
 		</RegisterBox>
-
+  
 
 
 		</form>
