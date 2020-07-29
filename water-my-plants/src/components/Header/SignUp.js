@@ -5,7 +5,7 @@ import {Route, useHistory} from 'react-router-dom';
 import Register from './Register'
 import {useResetRecoilState} from 'recoil'
 import { userState, passwordState, plantState, idState, phoneNumberState} from '../Store/States'
-
+import {HandleLogOut} from './LogoutPromo'
 
 const SignUpBanner = styled.div
 `
@@ -81,8 +81,8 @@ export default function SignUp() {
             </Route>
 
             <Route path ="/(account|settings)">
-                <a href="/">
-                    <button onClick={resetState}>
+                <a href="/Login">
+                    <button onClick={HandleLogOut()}>
                     Logout
                 </button>
                 </a>
