@@ -3,7 +3,7 @@ import axios from 'axios'
 import { useHistory } from 'react-router-dom'
 import styled from 'styled-components'
 import {useRecoilState} from 'recoil'
-import {userState, passwordState, idState, loginState, usernameState} from '../Store/States'
+import {userState} from '../Store/States'
 import FadeIn from 'react-fade-in';
 
 const RegisterBox = styled.div `

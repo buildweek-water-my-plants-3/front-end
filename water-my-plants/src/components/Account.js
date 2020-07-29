@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import axios from 'axios'
 import UserImage from '../../src/components/assets/user-placeholder.jpg';
-import {useRecoilState, useRecoilValue} from 'recoil'
+import {useRecoilState} from 'recoil'
 import {userState, plantState} from '../components/Store/States'
-import { Link } from 'react-router-dom';
+
 
 export default function () {
 
