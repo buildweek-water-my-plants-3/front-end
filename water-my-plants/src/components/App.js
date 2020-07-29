@@ -8,6 +8,8 @@ import Register from './Register/Register'
 import Login from './Login/Login'
 import PrivateRoute from '../utils/PrivateRoute'
 import Header from './Header/Header'
+import {RecoilRoot} from 'recoil'
+import EditAccount from './EditAccount'
 
 let id = localStorage.getItem('userID');
 
@@ -26,6 +28,7 @@ function App() {
 
   return (
 <>
+<RecoilRoot>
   <Header />
 
     <Route exact path="/Account">
@@ -41,6 +44,9 @@ function App() {
     <Route exact path="/Register">
         <Register />
     </Route>
+
+    <Route path="/EditAccount" component={EditAccount}/>
+</RecoilRoot>
 </>
   )
 }

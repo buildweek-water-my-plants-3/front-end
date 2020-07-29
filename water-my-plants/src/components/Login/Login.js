@@ -2,32 +2,10 @@ import React, { useState } from 'react'
 import axios from 'axios'
 import { useHistory } from 'react-router-dom'
 import styled from 'styled-components'
+import {useRecoilState} from 'recoil'
+import {userState, passwordState, idState, loginState, usernameState} from '../Store/States'
 
-
-export default function() {
-    const [username, setUsername] = useState('')
-    const [phoneNumber, setPhoneNumber] = useState('')
-	const [password, setPassword] = useState('')
-
-	const history = useHistory()
-	
-	const handleSubmit = (e) => {
-		e.preventDefault()
-		const payload = { username, password, phoneNumber }
-        // `withCredentials` option is required to automatically save/send cookies
-        // use this for all CRUD requests on protected routes on the BW project
-        // (in this project, coffee is a protected route)
-        // axios.post('https://starter-bw.herokuapp.com/auth/login', payload, { withCredentials: true })
-        axios.post('https://water-my-plants-server.herokuapp.com/auth/register', payload, {withCredentials: true})
-			.then((res) => {
-				console.log('login')
-				localStorage.setItem('token', (res.data.payload))
-				history.push('/coffee')
-			})
-			.catch((err) => console.log(err))
-	}
-
-	const RegisterBox = styled.div `
+const RegisterBox = styled.div `
 	border: 3px solid green;
 	border-radius: .35rem;
 	display: flex;
@@ -60,7 +38,31 @@ export default function() {
 	`
 
 
+export default function() {
+	const [username, setUsername] = useRecoilState(usernameState)
+	const [password, setPassword] = useRecoilState(passwordState)
+	const [user, setUser] = useRecoilState(userState)
 
+
+	const history = useHistory()
+	
+	const handleSubmit = (e) => {
+
+		e.preventDefault()
+
+		const payload = { username, password}
+        axios.post('https://water-my-plants-server.herokuapp.com/auth/login', payload, {withCredentials: true})
+			.then((res) => {
+				console.log('login')
+                localStorage.setItem('token', (res.data.token))
+                console.log(res.data)
+                localStorage.setItem('userID', res.data.user_id)
+				history.push('/Account')
+			})
+			.catch((err) => console.log(err))
+	}
+
+	
 
 	return (
 		<form onSubmit={handleSubmit}>
@@ -81,12 +83,7 @@ export default function() {
 				value={password}
 				onChange={e => setPassword(e.target.value)}
 			/>
-            <input
-				type='phoneNumber'
-				placeholder='Phone Number'
-				value={phoneNumber}
-				onChange={e => setPhoneNumber(e.target.value)}
-			/>
+
 
 
 			<SubmitButton type='submit'>Submit</SubmitButton>

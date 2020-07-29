@@ -2,15 +2,24 @@ import React from 'react';
 import styled from 'styled-components';
 import {Link} from 'react-router-dom';
 import { useHistory } from "react-router-dom";
+import { useEffect } from 'react';
+import axios from 'axios';
 
 
 
 const HandleLogOut = () => { 
 
-  const push = useHistory();
+  const history = useHistory()
 
-  push ("/login")
-  }
+  useEffect(() => {
+      axios.get('https://water-my-plants-server.herokuapp.com/auth/logout', { withCredentials: true })
+          .catch((err) => console.error(err))
+          .then(() => localStorage.removeItem('token'))
+          .finally(() => 
+          history.push('/'))
+  }, [history])
+  return null
+}
 
 const LogoutDiv = styled.div
 `
@@ -104,12 +113,12 @@ function LogoutPromo() {
 
         <LogoutContain>
 
-{/*           
+       
               <SignOutBanner>
                   <Link to="/login">
                       <button onClick= {() => HandleLogOut()}>logout</button>
                     </Link>
-              </SignOutBanner> */}
+              </SignOutBanner> 
 
 
 
