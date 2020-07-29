@@ -47,3 +47,8 @@ form {
 	align-items: center;
 	justify-content: center;
 }
+
+
+.bold {
+	font-weight: 700;
+}

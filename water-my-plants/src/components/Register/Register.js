@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import axios from 'axios'
 import { useHistory } from 'react-router-dom'
 import styled from 'styled-components'
+import FadeIn from 'react-fade-in';
 
 const RegisterBox = styled.div `
 border: 3px solid green;
@@ -23,7 +24,7 @@ const SubmitButton = styled.button `
 	width: 100%;
 	border-radius: .35rem;
 	margin-top: 1rem;
-	padding: 1.5rem;
+	padding: 1rem;
 	background-color: #0b9444;
 	text-transform: uppercase;
 	font-size: 1.5rem;
@@ -37,14 +38,13 @@ text-align: center;
 
 
 
-
 export default function() {
     const [username, setUsername] = useState('')
     const [phoneNumber, setPhoneNumber] = useState('')
 	const [password, setPassword] = useState('')
 
 	const history = useHistory()
-	
+
 	const handleSubmit = (e) => {
 		e.preventDefault()
 		const payload = { username, password, phoneNumber }
@@ -90,9 +90,11 @@ export default function() {
 				value={phoneNumber}
 				onChange={e => setPhoneNumber(e.target.value)}
 			/>
+			
+			<FadeIn>
+				<SubmitButton type='submit'>Submit</SubmitButton>
+			</FadeIn>
 
-
-			<SubmitButton type='submit'>Submit</SubmitButton>
 
 		</RegisterBox>
 

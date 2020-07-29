@@ -2,10 +2,11 @@ import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import axios from 'axios'
 import UserImage from '../../src/components/assets/user-placeholder.jpg';
-
+import {useRecoilState, useRecoilValue} from 'recoil'
+import {userState, plantState} from '../components/Store/States'
+import { Link } from 'react-router-dom';
 
 export default function () {
-    const [contact, setContact] = useState([]);
 
     const DashContain = styled.div
     `
@@ -79,14 +80,14 @@ export default function () {
         const PlantForms = styled.div
         `
         display: flex;
-        flex-direction: column;
-        align-items: flex-end;
-        justify-content: flex-end;
+        flex-direction: row;
+        justify-content: center;
+        flex-wrap: wrap;
         background-color: #dcdcdc;
-        height: calc(100% - 2rem);
+        min-height: 50%;
         width: 100%;
         border: 2px solid #555555;
-        padding: 2rem;
+        padding: 1rem;
         box-sizing: border-box;
         `
 
@@ -94,6 +95,9 @@ export default function () {
     
     width: 100%;
     `
+
+    const [user, setUser] = useRecoilState(userState)
+    const [plants, setPlants] = useRecoilState(plantState)
 
     let id = localStorage.getItem('userID');
 
@@ -103,12 +107,26 @@ export default function () {
             .get(`https://water-my-plants-server.herokuapp.com/users/${id}`, { withCredentials: true })
             .then(res => {
                 console.log(res.data)
-                setContact(res.data)
+                setUser(res.data)
             })
             .catch(err => console.log(err))
-    },[id])
+    },[])
 
-    const {username, phoneNumber} = contact;
+    useEffect(() => {
+        axios
+        .get(`https://water-my-plants-server.herokuapp.com/users/${id}/plants`, { withCredentials: true })
+        .then(res => {
+        setPlants(res.data)
+        console.log(plants, "plants")
+        })
+        .catch(err => console.log(err))
+    
+
+
+    },[])
+
+
+
 
     return (
         <div className='coffee-container'>
@@ -124,26 +142,43 @@ export default function () {
 
                             <UserCard>
                                 <DashImg src={UserImage} />
-                                <span>Hello {username}</span>
+                                <span>Hello {user.username}</span>
 
                             </UserCard>
 
                             <AccountStyle>
-                                <div key={id}>
+                            <div key={id}>
                                     <h2>Account info</h2>
                                     <hr></hr>
-                                    <p>Name: {username}</p>
-                                    <p>Phone Number: {phoneNumber}</p>
+                                    <p>Name: {user.username}</p>
+                                    <p>Phone Number: {user.phoneNumber}</p>
                                 </div>
+                             <button><Link to="/EditAccount">Edit Account</Link></button>   
                             </AccountStyle>
 
                          </DashCardLeft>
 
                          <DashCardRight>
 
+                        
                             <PlantForms>
+                            {plants.map((res) => 
 
+                            <PlantCard key={res.id}>
+                            <h3>{res.nickname} </h3>
+                            <TextSpread><p class="bold">species: </p> <p>{res.species} </p></TextSpread>
+                            <TextSpread><p class="bold">h2oFrequency:</p> <p> {res.h2oFrequency}</p></TextSpread>
+                            {/* <img src={res.image}/> */}
+
+                            <button>Edit Plant</button>
+                            </PlantCard>
+                            )}
+                            
                             </PlantForms>
+                            
+                          
+
+
 
                         </DashCardRight>
 
@@ -161,8 +196,45 @@ export default function () {
 
 
 
+const PlantCard = styled.div `
+display: flex;
+flex-wrap: wrap;
+flex-direction: row;
+justify-content: center;
+max-width: 31%;
+border: 2px solid #555555;
+background: white;
+padding: 1rem;
+margin: 1rem;
+min-height: 200px;
+
+    h3 {
+        margin: 0;
+        text-align: center;
+    }
+
+    button {
+        width: 80%;
+        height: 2rem;
+        font-weight: 900;
+    }
 
 
+`
+
+const TextSpread = styled.div `
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+width: 80%;
+
+    p {
+        display: inline-block;
+    }
+
+
+
+`
 
 
 
