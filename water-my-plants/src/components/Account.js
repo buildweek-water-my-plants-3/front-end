@@ -80,10 +80,11 @@ export default function () {
         const PlantForms = styled.div
         `
         display: flex;
-        flex-direction: column;
-        justify-content: flex-end;
+        flex-direction: row;
+        justify-content: center;
+        flex-wrap: wrap;
         background-color: #dcdcdc;
-        height: calc(100% - 2rem);
+        min-height: 50%;
         width: 100%;
         border: 2px solid #555555;
         padding: 1rem;
@@ -157,17 +158,27 @@ export default function () {
 
                          </DashCardLeft>
 
-                         <DashCardRight style={{border:'solid red'}}>
-                         {plants.map((res) => 
+                         <DashCardRight>
+
+                        
                             <PlantForms>
-                            <div key={res.id} style={{display:'flex', justifyContent:'center', flexDirection:'column', alignContent:'center'}}>
-                            <h3>nickname: {res.nickname} </h3>
-                            <p>species: {res.species} </p>
-                            <p>h2oFrequency: {res.h2oFrequency} </p>
-                            <img src={res.image}/>
-                            </div>
+                            {plants.map((res) => 
+
+                            <PlantCard key={res.id}>
+                            <h3>{res.nickname} </h3>
+                            <TextSpread><p class="bold">species: </p> <p>{res.species} </p></TextSpread>
+                            <TextSpread><p class="bold">h2oFrequency:</p> <p> {res.h2oFrequency}</p></TextSpread>
+                            {/* <img src={res.image}/> */}
+
                             <button>Edit Plant</button>
-                            </PlantForms>)}
+                            </PlantCard>
+                            )}
+                            
+                            </PlantForms>
+                            
+                          
+
+
 
                         </DashCardRight>
 
@@ -185,8 +196,45 @@ export default function () {
 
 
 
+const PlantCard = styled.div `
+display: flex;
+flex-wrap: wrap;
+flex-direction: row;
+justify-content: center;
+max-width: 31%;
+border: 2px solid #555555;
+background: white;
+padding: 1rem;
+margin: 1rem;
+min-height: 200px;
+
+    h3 {
+        margin: 0;
+        text-align: center;
+    }
+
+    button {
+        width: 80%;
+        height: 2rem;
+        font-weight: 900;
+    }
 
 
+`
+
+const TextSpread = styled.div `
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+width: 80%;
+
+    p {
+        display: inline-block;
+    }
+
+
+
+`
 
 
 

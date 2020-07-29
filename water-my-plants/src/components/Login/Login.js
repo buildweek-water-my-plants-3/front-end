@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom'
 import styled from 'styled-components'
 import {useRecoilState} from 'recoil'
 import {userState, passwordState, idState, loginState, usernameState} from '../Store/States'
+import FadeIn from 'react-fade-in';
 
 const RegisterBox = styled.div `
 	border: 3px solid green;
@@ -25,7 +26,7 @@ const RegisterBox = styled.div `
 		width: 100%;
 		border-radius: .35rem;
 		margin-top: 1rem;
-		padding: 1.5rem;
+		padding: 1rem;
 		background-color: #0b9444;
 		text-transform: uppercase;
 		font-size: 1.5rem;
@@ -85,8 +86,9 @@ export default function() {
 			/>
 
 
-
-			<SubmitButton type='submit'>Submit</SubmitButton>
+			<FadeIn>
+				<SubmitButton type='submit'>Submit</SubmitButton>
+			</FadeIn>
 
 		</RegisterBox>
 

@@ -3,6 +3,62 @@ import axios from 'axios';
 import { useHistory } from 'react-router-dom';
 import { phoneNumberState, passwordState } from './Store/States';
 import {useRecoilState} from 'recoil'
+import styled from 'styled-components'
+
+
+const SettingsBox = styled.div `
+border: 3px solid green;
+border-radius: .35rem;
+display: flex;
+flex-wrap: wrap;
+flex-direction: column;
+min-width: 300px;
+padding: 2rem;
+
+input {
+	display: inline-block;
+	min-height: 2rem;
+	margin: 0rem 0rem 1rem;
+	max-width: 100%;
+}
+
+button {
+    display: inline-block !important;
+    height: 2rem;
+    width: 48%;
+
+}
+
+
+`
+
+const SettingsButtons = styled.div `
+display flex;
+flex-direction: row;
+align-items: space-between;
+justiy-content: space-between;
+`
+
+const SubmitButton = styled.button `
+	width: 100%;
+	border-radius: .35rem;
+	margin-top: 1rem;
+	padding: 1.5rem;
+	background-color: #0b9444;
+	text-transform: uppercase;
+	font-size: 1.5rem;
+	color: white;
+`
+
+const Title = styled.h1 `
+text-align: center;
+
+`
+
+
+
+
+
 
 const EditAccount = () => {
     const [phoneNumber, setPhoneNumber] = useRecoilState(phoneNumberState)
@@ -36,9 +92,11 @@ const EditAccount = () => {
         
             <div style={{display:'flex', justifyContent:'center',}}>
 
-               
+       
                 <form onSubmit={handleSubmit}>
-                    <h1>Edit account</h1>
+                    <h1>Account Settings</h1>
+
+                    <SettingsBox>
                     <input
                         type='password'
                         placeholder='New Password'
@@ -58,9 +116,18 @@ const EditAccount = () => {
                         onChange={e => setPhoneNumber(e.target.value)}
                     />
 
-                    <button onClick={handleSubmit}>Submit</button>
-                    <button style={{marginLeft:"1rem"}} onClick={() => history.goBack()}>Back</button>
+                    <SettingsButtons>
+
+                        <button onClick={handleSubmit}>Submit</button>
+                        <button style={{marginLeft:"1rem"}} onClick={() => history.goBack()}>Back</button>
+
+                    </SettingsButtons>
+
+                    </SettingsBox>
+
                 </form>
+
+      
                 
             </div>
          
