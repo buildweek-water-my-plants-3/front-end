@@ -40,8 +40,8 @@ const RegisterBox = styled.div `
 
 
 export default function() {
-	const [username, setUsername] = useRecoilState(usernameState)
-	const [password, setPassword] = useRecoilState(passwordState)
+	const [username, setUsername] = useState()
+	const [password, setPassword] = useState()
 	const [user, setUser] = useRecoilState(userState)
 
 

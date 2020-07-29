@@ -153,7 +153,7 @@ export default function () {
                                     <p>Name: {user.username}</p>
                                     <p>Phone Number: {user.phoneNumber}</p>
                                 </div>
-                             <button><Link to="/EditAccount">Edit Account</Link></button>   
+                               
                             </AccountStyle>
 
                          </DashCardLeft>

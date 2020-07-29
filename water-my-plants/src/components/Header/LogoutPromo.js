@@ -7,16 +7,18 @@ import axios from 'axios';
 
 
 
-const HandleLogOut = () => { 
+export const HandleLogOut = () => { 
 
   const history = useHistory()
 
   useEffect(() => {
       axios.get('https://water-my-plants-server.herokuapp.com/auth/logout', { withCredentials: true })
           .catch((err) => console.error(err))
-          .then(() => localStorage.removeItem('token'))
+          .then(() => {localStorage.removeItem('token')
+          localStorage.removeItem('userID') })
           .finally(() => 
-          history.push('/'))
+          history.push('/Login'))
+          
   }, [history])
   return null
 }

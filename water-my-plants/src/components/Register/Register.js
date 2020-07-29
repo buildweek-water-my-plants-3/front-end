@@ -3,6 +3,8 @@ import axios from 'axios'
 import { useHistory } from 'react-router-dom'
 import styled from 'styled-components'
 import FadeIn from 'react-fade-in';
+import {userState, passwordState, idState, loginState, usernameState, phoneNumberState} from '../Store/States'
+import {useRecoilState} from 'recoil'
 
 const RegisterBox = styled.div `
 border: 3px solid green;
@@ -39,9 +41,9 @@ text-align: center;
 
 
 export default function() {
-    const [username, setUsername] = useState('')
-    const [phoneNumber, setPhoneNumber] = useState('')
-	const [password, setPassword] = useState('')
+	const [username, setUsername] = useState()
+	const [password, setPassword] = useState()
+    const [phoneNumber, setPhoneNumber] = useState()
 
 	const history = useHistory()
 
@@ -54,9 +56,8 @@ export default function() {
         // axios.post('https://starter-bw.herokuapp.com/auth/login', payload, { withCredentials: true })
         axios.post('https://water-my-plants-server.herokuapp.com/auth/register', payload, {withCredentials: true})
 			.then((res) => {
-				console.log('login')
-				localStorage.setItem('token', (res.data.payload))
-				history.push('/coffee')
+				console.log('register')
+				history.push('/Login')
 			})
 			.catch((err) => console.log(err))
 	}
