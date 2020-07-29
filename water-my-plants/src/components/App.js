@@ -31,9 +31,7 @@ function App() {
 <RecoilRoot>
   <Header />
 
-  <PrivateRoute exact path="/Account">
-        <Account />
-  </PrivateRoute>
+  <PrivateRoute exact path="/Account" component={Account}/>
 
 
     <Route exact path="/Login">
