@@ -6,7 +6,7 @@ import styled from 'styled-components'
 
 export default function() {
 
-	// Hello!
+	// Hello!!!
     const [username, setUsername] = useState('')
     const [phoneNumber, setPhoneNumber] = useState('')
 	const [password, setPassword] = useState('')
