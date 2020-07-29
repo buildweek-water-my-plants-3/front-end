@@ -2,10 +2,11 @@ import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import axios from 'axios'
 import UserImage from '../../src/components/assets/user-placeholder.jpg';
-
+import {useRecoilState, useRecoilValue} from 'recoil'
+import {userState, plantState} from '../components/Store/States'
+import { Link } from 'react-router-dom';
 
 export default function () {
-    const [contact, setContact] = useState([]);
 
     const DashContain = styled.div
     `
@@ -80,13 +81,12 @@ export default function () {
         `
         display: flex;
         flex-direction: column;
-        align-items: flex-end;
         justify-content: flex-end;
         background-color: #dcdcdc;
         height: calc(100% - 2rem);
         width: 100%;
         border: 2px solid #555555;
-        padding: 2rem;
+        padding: 1rem;
         box-sizing: border-box;
         `
 
@@ -94,6 +94,9 @@ export default function () {
     
     width: 100%;
     `
+
+    const [user, setUser] = useRecoilState(userState)
+    const [plants, setPlants] = useRecoilState(plantState)
 
     let id = localStorage.getItem('userID');
 
@@ -103,12 +106,26 @@ export default function () {
             .get(`https://water-my-plants-server.herokuapp.com/users/${id}`, { withCredentials: true })
             .then(res => {
                 console.log(res.data)
-                setContact(res.data)
+                setUser(res.data)
             })
             .catch(err => console.log(err))
-    },[id])
+    },[])
 
-    const {username, phoneNumber} = contact;
+    useEffect(() => {
+        axios
+        .get(`https://water-my-plants-server.herokuapp.com/users/${id}/plants`, { withCredentials: true })
+        .then(res => {
+        setPlants(res.data)
+        console.log(plants, "plants")
+        })
+        .catch(err => console.log(err))
+    
+
+
+    },[])
+
+
+
 
     return (
         <div className='coffee-container'>
@@ -124,26 +141,33 @@ export default function () {
 
                             <UserCard>
                                 <DashImg src={UserImage} />
-                                <span>Hello {username}</span>
+                                <span>Hello {user.username}</span>
 
                             </UserCard>
 
                             <AccountStyle>
-                                <div key={id}>
+                            <div key={id}>
                                     <h2>Account info</h2>
                                     <hr></hr>
-                                    <p>Name: {username}</p>
-                                    <p>Phone Number: {phoneNumber}</p>
+                                    <p>Name: {user.username}</p>
+                                    <p>Phone Number: {user.phoneNumber}</p>
                                 </div>
+                             <button><Link to="/EditAccount">Edit Account</Link></button>   
                             </AccountStyle>
 
                          </DashCardLeft>
 
-                         <DashCardRight>
-
+                         <DashCardRight style={{border:'solid red'}}>
+                         {plants.map((res) => 
                             <PlantForms>
-
-                            </PlantForms>
+                            <div key={res.id} style={{display:'flex', justifyContent:'center', flexDirection:'column', alignContent:'center'}}>
+                            <h3>nickname: {res.nickname} </h3>
+                            <p>species: {res.species} </p>
+                            <p>h2oFrequency: {res.h2oFrequency} </p>
+                            <img src={res.image}/>
+                            </div>
+                            <button>Edit Plant</button>
+                            </PlantForms>)}
 
                         </DashCardRight>
 

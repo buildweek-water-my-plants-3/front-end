@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import {Link} from 'react-router-dom';
 import {Route, useHistory} from 'react-router-dom';
 import Register from './Register'
+import {useResetRecoilState} from 'recoil'
+import { userState, passwordState, plantState, idState, phoneNumberState} from '../Store/States'
 
 
 const SignUpBanner = styled.div
@@ -54,6 +56,8 @@ font-family: roboto;
 `
 export default function SignUp() {
 
+    const resetState = useResetRecoilState( userState, passwordState, plantState, idState, phoneNumberState);
+
     return (
 
 
@@ -78,7 +82,7 @@ export default function SignUp() {
 
             <Route path ="/(account|settings)">
                 <a href="/">
-                    <button>
+                    <button onClick={resetState}>
                     Logout
                 </button>
                 </a>
