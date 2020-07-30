@@ -53,6 +53,7 @@ const LoginPrompt = styled.div`
   }
 `;
 
+
 function LoginPromo() {
   const LoginSpan = styled.span`
     color: white;

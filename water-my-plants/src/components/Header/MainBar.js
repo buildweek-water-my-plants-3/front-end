@@ -47,6 +47,7 @@ const Title = styled.h1`
   margin-bottom: 0;
 `;
 
+
 function MainBar() {
   return (
     <MainBarDiv>

@@ -28,13 +28,13 @@ function App() {
   `;
 
   return (
+
     <>
       <RecoilRoot>
         <Header />
-
-        <PrivateRoute exact path="/Account">
-          <Account />
-        </PrivateRoute>
+    
+       <Switch>
+        <PrivateRoute exact path="/Account" component={Account}/>
 
         <Route exact path="/Login">
           <Login />
@@ -54,9 +54,11 @@ function App() {
         </Route>
 
         <PrivateRoute path="/Settings" component={EditAccount} />
+       </Switch>
       </RecoilRoot>
     </>
   );
+
 }
 
 export default App;

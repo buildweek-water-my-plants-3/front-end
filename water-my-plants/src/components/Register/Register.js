@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
@@ -54,10 +55,7 @@ export default function () {
   const handleSubmit = (e) => {
     e.preventDefault();
     const payload = { username, password, phoneNumber };
-    // `withCredentials` option is required to automatically save/send cookies
-    // use this for all CRUD requests on protected routes on the BW project
-    // (in this project, coffee is a protected route)
-    // axios.post('https://starter-bw.herokuapp.com/auth/login', payload, { withCredentials: true })
+
     axios
       .post(
         "https://water-my-plants-server.herokuapp.com/auth/register",
@@ -101,4 +99,5 @@ export default function () {
       </RegisterBox>
     </form>
   );
+
 }
