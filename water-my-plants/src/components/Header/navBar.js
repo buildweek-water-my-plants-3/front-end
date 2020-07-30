@@ -18,10 +18,9 @@ function NavBar() {
   return (
     <NavContain>
       <Route path contains="/">
-        <Link id="plantsLink" to="/">
-          Home
-        </Link>
       </Route>
+    
+      <a id="plantsLink" href="https://hopeful-thompson-32831a.netlify.app/">Home</a>
 
       <Route path="/(account|settings)">
         <Link id="plantsLink" to="/Account">
