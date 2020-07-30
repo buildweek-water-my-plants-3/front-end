@@ -40,6 +40,10 @@ function App() {
           <Login />
         </Route>
 
+        <Route exact path="/logout">
+          <Logout />
+        </Route>
+
         <Route exact path="/Register">
           <Register />
         </Route>

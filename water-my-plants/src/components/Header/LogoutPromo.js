@@ -4,24 +4,25 @@ import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import { useEffect } from "react";
 import axios from "axios";
+import Logout from '../Logout'
 
-export const HandleLogOut = () => {
-  const history = useHistory();
+// export const HandleLogOut = () => {
+//   // const history = useHistory();
 
-  useEffect(() => {
-    axios
-      .get("https://water-my-plants-server.herokuapp.com/auth/logout", {
-        withCredentials: true,
-      })
-      .catch((err) => console.error(err))
-      .then(() => {
-        localStorage.removeItem("token");
-        localStorage.removeItem("userID");
-      })
-      .finally(() => history.push("/Login"));
-  }, [history]);
-  return null;
-};
+// //   useEffect(() => {
+// //     axios
+// //       .get("https://water-my-plants-server.herokuapp.com/auth/logout", {
+// //         withCredentials: true,
+// //       })
+// //       .catch((err) => console.error(err))
+// //       .then(() => {
+// //         localStorage.removeItem("token");
+// //         localStorage.removeItem("userID");
+// //       })
+// //       .finally(() => history.push("/Login"));
+// //   }, [history]);
+// //   return null;
+// // };
 
 const LogoutDiv = styled.div`
   display: flex;
@@ -90,20 +91,21 @@ const SignOutBanner = styled.div`
   span {
     font-size: 1.2rem;
   }
-`;
+// `;
 
-function LogoutPromo() {
+
+
+
+export function LogoutPromo() {
   return (
     <LogoutDiv>
       <LogoutContain>
         <SignOutBanner>
-          <Link to="/login">
-            <button onClick={() => HandleLogOut()}>logout</button>
+          <Link to="/logout">
+           <button>logout</button>
           </Link>
         </SignOutBanner>
       </LogoutContain>
     </LogoutDiv>
   );
 }
-
-export default LogoutPromo;

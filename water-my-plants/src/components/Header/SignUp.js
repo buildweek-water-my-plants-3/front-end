@@ -79,8 +79,8 @@ export default function SignUp() {
       </Route>
 
       <Route path="/(account|settings)">
-        <a href="/Login">
-          <button onClick={HandleLogOut()}>Logout</button>
+        <a href="/logout">
+          <button>Logout</button>
         </a>
       </Route>
     </SignUpBanner>
