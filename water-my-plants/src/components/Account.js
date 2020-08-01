@@ -89,11 +89,27 @@ export default function () {
         border: 2px solid #555555;
         padding: 1rem;
         box-sizing: border-box;
+
+            h1 {
+                width: 100%;
+                text-align: center;
+                margin: 0;
+
+            }
+
         `
 
     const AccountStyle = styled.div `
     
-    width: 100%;
+        width: calc(100% - 6px);
+
+        button {
+            width: 100%;
+            height: 2rem;
+        }
+
+
+
     `
 
     const [user, setUser] = useRecoilState(userState)
@@ -153,15 +169,21 @@ export default function () {
                                     <p>Name: {user.username}</p>
                                     <p>Phone Number: {user.phoneNumber}</p>
                                 </div>
-                             <button><Link to="/EditAccount">Edit Account</Link></button>   
+                             <button><Link to="/Settings">Edit Account</Link></button>   
                             </AccountStyle>
 
                          </DashCardLeft>
 
                          <DashCardRight>
 
+                      
+
                         
                             <PlantForms>
+
+                            <h1>Your Plants</h1>
+
+
                             {plants.map((res) => 
 
                             <PlantCard key={res.id}>

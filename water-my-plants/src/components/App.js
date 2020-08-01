@@ -31,6 +31,10 @@ function App() {
 <RecoilRoot>
   <Header />
 
+  <Route exact path="/">
+  <Login />
+    </Route>
+
     <Route exact path="/Account">
         <Account />
     </Route>
