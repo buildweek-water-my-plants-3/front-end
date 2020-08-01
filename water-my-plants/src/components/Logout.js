@@ -6,7 +6,7 @@ export default function () {
     const history = useHistory()
 
     useEffect(() => {
-        axios.get('https://starter-bw.herokuapp.com/auth/logout', { withCredentials: true })
+        axios.get('https://water-my-plants-server.herokuapp.com/auth/logout', { withCredentials: true })
             .catch((err) => console.error(err))
             .then(() => localStorage.removeItem('token'))
             .finally(() => 

@@ -14,6 +14,8 @@ const AddPlant = () => {
   const [plantToAdd, setPlantToAdd] = useState(initialPlant);
   const userId = localStorage.getItem("userID");
 
+  const history = useHistory()
+
   const handleChange = (e) => {
     if (e.target.name === "h2oFrequency") {
       setPlantToAdd({ ...plantToAdd, [e.target.name]: +e.target.value });
@@ -36,6 +38,7 @@ const AddPlant = () => {
       .then((res) => {
         console.log(res);
         setPlantToAdd(initialPlant);
+        history.push("/account")
       })
       .catch((err) => console.log(err));
   };

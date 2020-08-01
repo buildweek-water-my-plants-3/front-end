@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import "../styles.css";
-import { Switch, Route, Link } from "react-router-dom";
+import { Switch, Route, Link, Redirect } from "react-router-dom";
 import Logout from "./Logout";
 import Account from "./Account";
 import Register from "./Register/Register";
@@ -35,6 +35,10 @@ function App() {
     
        <Switch>
         <PrivateRoute exact path="/Account" component={Account}/>
+        {/* redirect to Login on / route */}
+        <Route exact path="/">
+          <Redirect to="/Login" />
+        </Route>
 
         <Route exact path="/Login">
           <Login />
