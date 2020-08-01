@@ -5,6 +5,9 @@ import styled from 'styled-components'
 import {useRecoilState} from 'recoil'
 import {userState, passwordState, idState, loginState, usernameState} from '../Store/States'
 import FadeIn from 'react-fade-in';
+import {useForm} from 'react-hook-form';
+
+
 
 const RegisterBox = styled.div `
 	border: 3px solid green;
@@ -39,17 +42,16 @@ const RegisterBox = styled.div `
 	`
 
 
+
+
 export default function() {
+	const {register, handleSubmit, errors} = useForm();
 	const [username, setUsername] = useRecoilState(usernameState)
 	const [password, setPassword] = useRecoilState(passwordState)
 	const [user, setUser] = useRecoilState(userState)
-
-
 	const history = useHistory()
 	
-	const handleSubmit = (e) => {
-
-		e.preventDefault()
+	const onSubmit = (e) => {
 
 		const payload = { username, password}
         axios.post('https://water-my-plants-server.herokuapp.com/auth/login', payload, {withCredentials: true})
@@ -62,11 +64,9 @@ export default function() {
 			})
 			.catch((err) => console.log(err))
 	}
-
 	
-
 	return (
-		<form onSubmit={handleSubmit}>
+		<form onSubmit={handleSubmit(onSubmit)}>
 			
 			<Title>Login</Title>
 
@@ -75,15 +75,26 @@ export default function() {
 			<input
 				type='text'
 				placeholder='Username'
+				name='username'
 				value={username}
+				ref={register({
+					required: "Required",
+					pattern: {
+					  value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+					  message: "invalid email address"
+					}})}
 				onChange={e => setUsername(e.target.value)}
 			/>
+			{errors.username && <p>Your username must be an email address.</p>}
 			<input
 				type='password'
 				placeholder='Password'
+				name='password'
 				value={password}
+				ref={register({required: true, minLength: 6})}
 				onChange={e => setPassword(e.target.value)}
 			/>
+			{errors.password && <p>Your password must contain at a minimum 8 characters.</p>}
 
 
 			<FadeIn>

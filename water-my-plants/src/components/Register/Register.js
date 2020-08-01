@@ -3,6 +3,7 @@ import axios from 'axios'
 import { useHistory } from 'react-router-dom'
 import styled from 'styled-components'
 import FadeIn from 'react-fade-in';
+import {useForm} from 'react-hook-form';
 
 const RegisterBox = styled.div `
 border: 3px solid green;
@@ -39,13 +40,14 @@ text-align: center;
 
 
 export default function() {
+	const {register, handleSubmit, errors} = useForm();
     const [username, setUsername] = useState('')
     const [phoneNumber, setPhoneNumber] = useState('')
 	const [password, setPassword] = useState('')
 
 	const history = useHistory()
 
-	const handleSubmit = (e) => {
+	const onSubmit = (e) => {
 		e.preventDefault()
 		const payload = { username, password, phoneNumber }
         // `withCredentials` option is required to automatically save/send cookies
@@ -62,7 +64,7 @@ export default function() {
 	}
 
 	return (
-		<form onSubmit={handleSubmit}>
+		<form onSubmit={handleSubmit(onSubmit)}>
 
 
 			
@@ -70,26 +72,39 @@ export default function() {
 
 			<RegisterBox>
 
-			
-
 			<input
 				type='text'
 				placeholder='Username'
+				name='username'
 				value={username}
+				ref={register({
+					required: "Required",
+					pattern: {
+					  value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+					  message: "invalid email address"
+					}})}
 				onChange={e => setUsername(e.target.value)}
 			/>
+			{errors.username && <p>Your username must be an email address.</p>}
 			<input
 				type='password'
 				placeholder='Password'
+				name='password'
 				value={password}
+				ref={register({required: true, minLength: 6})}
 				onChange={e => setPassword(e.target.value)}
 			/>
-            <input
+			{errors.password && <p>Your password must contain at a minimum 8 characters.</p>}
+           
+		    <input
 				type='phoneNumber'
 				placeholder='Phone Number'
 				value={phoneNumber}
+				name='phone'
 				onChange={e => setPhoneNumber(e.target.value)}
+				ref={register({required: true, minLength: 9})}
 			/>
+			{errors.phone && <p>You must enter a valid phone number</p>}
 			
 			<FadeIn>
 				<SubmitButton type='submit'>Submit</SubmitButton>
