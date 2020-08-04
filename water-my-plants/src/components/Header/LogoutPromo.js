@@ -1,10 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { useHistory } from "react-router-dom";
-import { useEffect } from "react";
-import axios from "axios";
-import Logout from '../Logout'
 
 // export const HandleLogOut = () => {
 //   // const history = useHistory();
@@ -91,10 +87,8 @@ const SignOutBanner = styled.div`
   span {
     font-size: 1.2rem;
   }
-// `;
-
-
-
+  //
+`;
 
 export function LogoutPromo() {
   return (
@@ -102,7 +96,7 @@ export function LogoutPromo() {
       <LogoutContain>
         <SignOutBanner>
           <Link to="/logout">
-           <button>logout</button>
+            <button>logout</button>
           </Link>
         </SignOutBanner>
       </LogoutContain>

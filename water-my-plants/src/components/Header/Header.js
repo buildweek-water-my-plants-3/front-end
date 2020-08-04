@@ -1,11 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-// import fonts from '../../fonts.css'
 
-import { Route } from "react-router-dom";
 import Locator from "./Locator";
 import LoginPromo from "./loginPromo";
-import LogoutPromo from "./LogoutPromo";
 import MainBar from "./MainBar";
 
 function Header() {

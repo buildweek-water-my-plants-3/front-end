@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import "../styles.css";
-import { Switch, Route, Link } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 import Logout from "./Logout";
 import Account from "./Account";
 import Register from "./Register/Register";
@@ -28,41 +28,39 @@ function App() {
   `;
 
   return (
-
     <>
       <RecoilRoot>
         <Header />
-    
-       <Switch>
-        <PrivateRoute exact path="/Account" component={Account}/>
 
-        <Route exact path="/Login">
-          <Login />
-        </Route>
+        <Switch>
+          <PrivateRoute exact path="/Account" component={Account} />
 
-        <Route exact path="/logout">
-          <Logout />
-        </Route>
+          <Route exact path="/Login">
+            <Login />
+          </Route>
 
-        <Route exact path="/Register">
-          <Register />
-        </Route>
+          <Route exact path="/logout">
+            <Logout />
+          </Route>
 
-        <Route
-          path="/edit-plant/:id"
-          render={(props) => <UpdatePlant {...props} userId={id} />}
-        />
+          <Route exact path="/Register">
+            <Register />
+          </Route>
 
-        <Route exact path="/add-plant/:id">
-          <AddPlant />
-        </Route>
+          <Route
+            path="/edit-plant/:id"
+            render={(props) => <UpdatePlant {...props} userId={id} />}
+          />
 
-        <PrivateRoute path="/Settings" component={EditAccount} />
-       </Switch>
+          <Route exact path="/add-plant/:id">
+            <AddPlant />
+          </Route>
+
+          <PrivateRoute path="/Settings" component={EditAccount} />
+        </Switch>
       </RecoilRoot>
     </>
   );
-
 }
 
 export default App;

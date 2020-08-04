@@ -1,9 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import leaf from "../../img/leaf.svg";
 import logoImg from "../../img/logo-earth.svg";
 import NavBar from "../../components/Header/navBar";
-import { Link, Route } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const MainBarDiv = styled.div`
   display: flex;
@@ -47,7 +46,6 @@ const Title = styled.h1`
   margin-bottom: 0;
 `;
 
-
 function MainBar() {
   return (
     <MainBarDiv>
@@ -55,7 +53,7 @@ function MainBar() {
         <LogoDiv>
           <img src={logoImg} />
 
-          <Title>Water My Plants</Title>
+          <Title>Wet My Plants</Title>
         </LogoDiv>
       </Link>
 

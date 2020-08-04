@@ -1,18 +1,17 @@
-
 import React, { useState } from "react";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 import FadeIn from "react-fade-in";
-import {
-  userState,
-  passwordState,
-  idState,
-  loginState,
-  usernameState,
-  phoneNumberState,
-} from "../Store/States";
-import { useRecoilState } from "recoil";
+// import {
+//   userState,
+//   passwordState,
+//   idState,
+//   loginState,
+//   usernameState,
+//   phoneNumberState,
+// } from "../Store/States";
+// import { useRecoilState } from "recoil";
 
 const RegisterBox = styled.div`
   border: 3px solid green;
@@ -99,5 +98,4 @@ export default function () {
       </RegisterBox>
     </form>
   );
-
 }

@@ -5,10 +5,10 @@ import styled from "styled-components";
 import { useRecoilState } from "recoil";
 import {
   userState,
-  passwordState,
-  idState,
-  loginState,
-  usernameState,
+  // passwordState,
+  // idState,
+  // loginState,
+  // usernameState,
 } from "../Store/States";
 import FadeIn from "react-fade-in";
 
