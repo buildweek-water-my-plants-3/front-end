@@ -1,4 +1,4 @@
-import {atom, selector} from 'recoil';
+import {atom} from 'recoil';
 
 const userState = atom({
     key: "user",
@@ -36,7 +36,11 @@ const phoneNumberState = atom({
 
 const plantState = atom({
     key: "plants",
-    default: [{ id:'', nickname: 'str', species: 'str', h2oFrequency:'', image: 'str' }],
+    default: [{ id:'',
+     nickname: 'str',
+      species: 'str',
+       h2oFrequency:'',
+        image: 'https://images.unsplash.com/photo-1533038590840-1cde6e668a91?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80' }],
     
     
 });
