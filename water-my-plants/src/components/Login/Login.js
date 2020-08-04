@@ -77,12 +77,8 @@ export default function() {
 				placeholder='Username'
 				name='username'
 				value={username}
-				ref={register({
-					required: "Required",
-					pattern: {
-					  value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-					  message: "invalid email address"
-					}})}
+				ref={register({required: true, minLength: 3})}
+				
 				onChange={e => setUsername(e.target.value)}
 			/>
 			{errors.username && <p>Your username must be an email address.</p>}

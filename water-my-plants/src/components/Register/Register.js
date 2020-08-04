@@ -48,7 +48,6 @@ export default function() {
 	const history = useHistory()
 
 	const onSubmit = (e) => {
-		e.preventDefault()
 		const payload = { username, password, phoneNumber }
         // `withCredentials` option is required to automatically save/send cookies
         // use this for all CRUD requests on protected routes on the BW project
